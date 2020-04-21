@@ -1,1 +1,11 @@
 alt + insert   Intellij IDEA 像eclipse那样给maven添加依赖
+
+1、在jsp中使用${pageContext.request.contextPath}获取相对路径，可是最后路径变为：
+http://localhost:8080/oneself/$%7BpageContext.request.contextPath%7D/css/reset.css
+解决方案：因为web.xml web-app元素声明的版本号太低，即2.4以上才能用，替换成3.0就可以用了
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
