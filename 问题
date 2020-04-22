@@ -9,3 +9,10 @@ http://localhost:8080/oneself/$%7BpageContext.request.contextPath%7D/css/reset.c
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+
+ 如果单纯只需要跳转  不做任何逻辑处理  可以使用
+ <mvc:view-controller path="/xxx" view-name="视图名"/>
+
+
+

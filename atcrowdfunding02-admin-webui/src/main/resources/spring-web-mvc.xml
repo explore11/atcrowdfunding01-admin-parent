@@ -19,4 +19,14 @@
         <property name="prefix" value="/WEB-INF/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+
+    <!--    配置对xml类型  进行异常处理的配置-->
+<!--    <bean id="simpleMappingExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
+<!--        <property name="exceptionMappings">-->
+<!--            <props>-->
+<!--                <prop key="java.lang.Exception">system-error.jsp</prop>-->
+<!--            </props>-->
+<!--        </property>-->
+<!--    </bean>-->
+
 </beans>
