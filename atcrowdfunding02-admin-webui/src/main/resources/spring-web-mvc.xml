@@ -28,5 +28,6 @@
             </props>
         </property>
     </bean>
-
+    <!--跳转到登录页面-->
+    <mvc:view-controller path="/admin/to/login.html" view-name="admin-login"/>
 </beans>
