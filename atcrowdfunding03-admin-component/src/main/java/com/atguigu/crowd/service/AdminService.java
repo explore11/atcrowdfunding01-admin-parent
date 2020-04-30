@@ -9,5 +9,11 @@ public interface AdminService {
 
     List<Admin> getAll();
 
-
+    /**
+     * 查询登录账号
+     * @param loginAccount
+     * @param loginPassword
+     * @return
+     */
+    Admin doLogin(String loginAccount, String loginPassword);
 }

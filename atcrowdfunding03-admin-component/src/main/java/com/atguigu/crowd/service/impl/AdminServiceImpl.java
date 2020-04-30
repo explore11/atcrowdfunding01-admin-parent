@@ -4,17 +4,59 @@ import com.atguigu.crowd.entity.Admin;
 import com.atguigu.crowd.entity.AdminExample;
 import com.atguigu.crowd.mapper.AdminMapper;
 import com.atguigu.crowd.service.AdminService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.atguigu.crowd.util.Constants;
+import com.atguigu.crowd.util.CrowdUtils;
+import com.atguigu.crowd.util.LoginFailException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class AdminServiceImpl implements AdminService {
     @Resource
     private AdminMapper adminMapper;
+
+
+    /**
+     * 登录账号
+     *
+     * @param loginAccount
+     * @param loginPassword
+     * @return
+     */
+    public Admin doLogin(String loginAccount, String loginPassword) {
+        // 1、与数据库进行交互  查询账号
+        AdminExample adminExample = new AdminExample();
+        // 2、判断账号是否存在
+        AdminExample.Criteria criteria = adminExample.createCriteria();
+        // 3、如果不存在 则抛出自定义的异常
+        criteria.andLoginAcctEqualTo(loginAccount);
+        List<Admin> adminList = adminMapper.selectByExample(adminExample);
+        // 判断
+        if (null == adminList || adminList.size() <= 0) {
+            throw new LoginFailException(Constants.MESSAGE_LOGIN_FAILED);
+        }
+        if (adminList.size() > 1) {
+            throw new RuntimeException(Constants.SYSTEM_ERROR_ACCOUNT_NOT_UNIQUE);
+        }
+        // 获取对象
+        Admin admin = adminList.get(0);
+
+        if (null == admin) {
+            throw new LoginFailException(Constants.MESSAGE_LOGIN_FAILED);
+        }
+        // 获取数据库中的密码
+        String userPwdByDB = admin.getUserPswd();
+        // 从页面传过来后记性md5加密
+        String userPwdByForm = CrowdUtils.md5(userPwdByDB);
+        // 判断是否相等  不相等则抛出异常
+        if (!Objects.equals(userPwdByDB, userPwdByForm)) {
+            throw new LoginFailException(Constants.MESSAGE_LOGIN_FAILED);
+        }
+        return admin;
+    }
 
     public void save(Admin admin) {
         adminMapper.insert(admin);

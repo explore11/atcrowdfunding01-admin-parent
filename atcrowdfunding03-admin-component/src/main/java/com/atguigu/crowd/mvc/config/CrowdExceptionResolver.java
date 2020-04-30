@@ -2,6 +2,7 @@ package com.atguigu.crowd.mvc.config;
 
 import com.atguigu.crowd.util.Constants;
 import com.atguigu.crowd.util.CrowdUtils;
+import com.atguigu.crowd.util.LoginFailException;
 import com.atguigu.crowd.util.ResultEntity;
 import com.google.gson.Gson;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -17,6 +18,20 @@ import java.io.IOException;
  */
 @ControllerAdvice
 public class CrowdExceptionResolver {
+
+
+    /**
+     * 将一个具体的异常类型和一个方法进行绑定
+     *
+     * @return
+     */
+    @ExceptionHandler(LoginFailException.class)
+    public ModelAndView resolverLoginFailException(LoginFailException loginFailException, HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        String viewName = "admin-login";
+        return commonResolver(loginFailException, request, response, viewName);
+    }
+
 
     /**
      * 将一个具体的异常类型和一个方法进行绑定
