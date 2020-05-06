@@ -21,7 +21,8 @@
     </bean>
 
     <!--    配置对xml类型  进行异常处理的配置-->
-    <bean id="simpleMappingExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+    <bean id="simpleMappingExceptionResolver"
+          class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="exceptionMappings">
             <props>
                 <prop key="java.lang.Exception">system-error</prop>
@@ -30,4 +31,20 @@
     </bean>
     <!--跳转到登录页面-->
     <mvc:view-controller path="/admin/to/login.html" view-name="admin-login"/>
+    <mvc:view-controller path="/admin/to/main/page.html" view-name="admin-main"/>
+
+    <!--    注册自定义的拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!-- /* 表示拦截一层请求  /** 表示拦截多层请求-->
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/admin/to/login.html"/>
+            <mvc:exclude-mapping path="/admin/do/login.html"/>
+            <mvc:exclude-mapping path="/admin/do/loginOut.html"/>
+
+            <bean class="com.atguigu.crowd.mvc.interceptor.LoginInterceptor"/>
+
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>

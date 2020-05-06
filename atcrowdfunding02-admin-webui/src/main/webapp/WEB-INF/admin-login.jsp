@@ -28,8 +28,8 @@
 
 <div class="container">
 
-    <h2 style="color: red">${requestScope.exception.message}</h2>
-    <form action="admin/do/login.html" class="form-signin" role="form">
+    <h2 style="color: red;text-align: center ">${requestScope.exception.message}</h2>
+    <form action="admin/do/login.html" method="post" class="form-signin" role="form">
         <h2 class="form-signin-heading"><i class="glyphicon glyphicon-log-in"></i> 管理员登录</h2>
         <div class="form-group has-success has-feedback">
             <input type="text" name="loginAccount" class="form-control" id="inputSuccess4" placeholder="请输入登录账号" autofocus>
@@ -39,7 +39,7 @@
             <input type="text" name="loginPassword" class="form-control" id="inputSuccess5" placeholder="请输入登录密码" style="margin-top:10px;">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
-        <button type="submit" class="btn btn-lg btn-success btn-block" href="main.html" >登录</button>
+        <button type="submit" class="btn btn-lg btn-success btn-block">登录</button>
     </form>
 </div>
 <script src="jquery/jquery-2.1.1.min.js"></script>

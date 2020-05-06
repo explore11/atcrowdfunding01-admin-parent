@@ -1,6 +1,6 @@
 package com.atguigu.crowd.mvc.config;
 
-import com.atguigu.crowd.util.Constants;
+import com.atguigu.crowd.util.CrowdConstants;
 import com.atguigu.crowd.util.CrowdUtils;
 import com.atguigu.crowd.util.LoginFailException;
 import com.atguigu.crowd.util.ResultEntity;
@@ -57,7 +57,7 @@ public class CrowdExceptionResolver {
             return null;
         } else {  // false  普通请求
             ModelAndView modelAndView = new ModelAndView();
-            modelAndView.addObject(Constants.ATTR_NAME_EXCEPTION, exception);
+            modelAndView.addObject(CrowdConstants.ATTR_NAME_EXCEPTION, exception);
             modelAndView.setViewName(viewName);
             return modelAndView;
         }

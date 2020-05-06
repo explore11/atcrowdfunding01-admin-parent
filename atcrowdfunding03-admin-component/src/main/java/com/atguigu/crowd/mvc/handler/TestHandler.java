@@ -20,7 +20,7 @@ public class TestHandler {
     @RequestMapping("/test/ssm.html")
     public String test(ModelMap modelMap) {
         List<Admin> list = adminService.getAll();
-        int i =1/0;
+//        int i =1/0;
 //        String a=null;
 //        System.out.println(a.length());
         modelMap.addAttribute("list", list);
