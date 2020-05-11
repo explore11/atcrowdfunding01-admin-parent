@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" >
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/login.css">
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
     <style>
 
     </style>
@@ -42,7 +44,6 @@
         <button type="submit" class="btn btn-lg btn-success btn-block">登录</button>
     </form>
 </div>
-<script src="jquery/jquery-2.1.1.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 </html>

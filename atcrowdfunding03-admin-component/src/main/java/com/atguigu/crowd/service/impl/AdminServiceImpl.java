@@ -7,6 +7,8 @@ import com.atguigu.crowd.service.AdminService;
 import com.atguigu.crowd.util.CrowdConstants;
 import com.atguigu.crowd.util.CrowdUtils;
 import com.atguigu.crowd.util.LoginFailException;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,7 +23,6 @@ public class AdminServiceImpl implements AdminService {
 
     /**
      * 登录账号
-     *
      * @param loginAccount
      * @param loginPassword
      * @return
@@ -56,6 +57,23 @@ public class AdminServiceImpl implements AdminService {
             throw new LoginFailException(CrowdConstants.MESSAGE_LOGIN_FAILED);
         }
         return admin;
+    }
+
+    /**
+     * 根据关键字查询分页信息
+     * @param keyWord
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @Override
+    public PageInfo<Admin> getPageInfo(String keyWord, Integer pageNum, Integer pageSize) {
+        // 1、调用pageHelper的静态方法
+        PageHelper.startPage(pageNum,pageSize);
+        // 2、调用查询方法
+        List<Admin> list = adminMapper.selectAdminByKeyWord(keyWord);
+        // 3、返回数据
+        return new PageInfo<>(list);
     }
 
     public void save(Admin admin) {
