@@ -1,8 +1,10 @@
 package com.atguigu.crowd.mvc.handler;
 
 import com.atguigu.crowd.entity.Admin;
+import com.atguigu.crowd.mapper.AdminMapper;
 import com.atguigu.crowd.service.AdminService;
 import com.sun.org.apache.xpath.internal.SourceTree;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,5 +27,17 @@ public class TestHandler {
 //        System.out.println(a.length());
         modelMap.addAttribute("list", list);
         return "target";
+    }
+
+
+
+
+    @RequestMapping("/test.html")
+    public void  test(){
+        for (int i = 0; i < 238; i++) {
+            Admin admin = new Admin(null, "LoginAcct" + i, "password" + i, "username" + i, "email" + i, null);
+            adminService.save(admin);
+
+        }
     }
 }

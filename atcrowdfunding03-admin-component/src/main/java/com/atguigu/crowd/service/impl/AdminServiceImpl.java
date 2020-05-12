@@ -9,6 +9,8 @@ import com.atguigu.crowd.util.CrowdUtils;
 import com.atguigu.crowd.util.LoginFailException;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.Test;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,6 +22,14 @@ public class AdminServiceImpl implements AdminService {
     @Resource
     private AdminMapper adminMapper;
 
+    @Test
+    public void  test(){
+        for (int i = 0; i < 238; i++) {
+            Admin admin = new Admin(null, "LoginAcct" + i, "password" + i, "username" + i, "email" + i, null);
+            adminMapper.insert(admin);
+
+        }
+    }
 
     /**
      * 登录账号
