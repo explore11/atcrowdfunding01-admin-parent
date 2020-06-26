@@ -26,4 +26,29 @@ public interface AdminService {
      * @return
      */
     PageInfo<Admin> getPageInfo(String keyWord,Integer pageNum,Integer pageSize);
+
+    /**
+     * 删除用户对象
+     * @param adminId
+     * @return
+     */
+    Boolean removeAdmin(Integer adminId);
+
+    /**
+     * 保存用户
+     * @param admin
+     */
+    void saveAdmin(Admin admin);
+
+    /**
+     * 根据id用户
+     * @param adminId
+     */
+    Admin getAdminById(Integer adminId);
+
+    /**
+     * 更新用户
+     * @param admin
+     */
+    void editAdmin(Admin admin);
 }

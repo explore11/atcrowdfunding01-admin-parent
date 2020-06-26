@@ -32,6 +32,7 @@
     <!--跳转到登录页面-->
     <mvc:view-controller path="/admin/to/login.html" view-name="admin-login"/>
     <mvc:view-controller path="/admin/to/main/page.html" view-name="admin-main"/>
+    <mvc:view-controller path="/admin/add/page.html" view-name="admin-add"/>
 
     <!--    注册自定义的拦截器-->
     <mvc:interceptors>

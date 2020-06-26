@@ -6,13 +6,11 @@ import com.atguigu.crowd.mapper.AdminMapper;
 import com.atguigu.crowd.service.AdminService;
 import com.atguigu.crowd.util.CrowdConstants;
 import com.atguigu.crowd.util.CrowdUtils;
-import com.atguigu.crowd.util.LoginFailException;
+import com.atguigu.crowd.util.exception.LoginFailException;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Objects;
@@ -83,6 +81,49 @@ public class AdminServiceImpl implements AdminService {
         List<Admin> list = adminMapper.selectAdminByKeyWord(keyWord);
         // 3、返回数据
         return new PageInfo<>(list);
+    }
+
+
+    /**
+     * 删除用户对象
+     * @param adminId
+     * @return
+     */
+    @Override
+    public Boolean removeAdmin(Integer adminId) {
+        int i = adminMapper.deleteByPrimaryKey(adminId);
+        if (i>0){
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
+
+
+    /**
+     * 保存用户
+     * @param admin
+     */
+    @Override
+    public void saveAdmin(Admin admin) {
+        adminMapper.insert(admin);
+    }
+
+    /**
+     * 根据id查询用户
+     * @param adminId
+     */
+    @Override
+    public  Admin getAdminById(Integer adminId) {
+        return adminMapper.selectByPrimaryKey(adminId);
+    }
+
+    /**
+     * 更新用户
+     * @param admin
+     */
+    @Override
+    public void editAdmin(Admin admin) {
+        adminMapper.updateByPrimaryKeySelective(admin);
     }
 
     public void save(Admin admin) {
