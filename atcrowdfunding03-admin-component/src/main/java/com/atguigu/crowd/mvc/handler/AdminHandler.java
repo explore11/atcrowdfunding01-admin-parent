@@ -7,7 +7,6 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -26,7 +25,6 @@ public class AdminHandler {
 
     /**
      * 登录
-     *
      * @param loginAccount
      * @param loginPassword
      * @param session
@@ -34,11 +32,8 @@ public class AdminHandler {
      */
     @RequestMapping("/admin/do/login.html")
     public String doLogin(@RequestParam("loginAccount") String loginAccount, @RequestParam("loginPassword") String loginPassword, HttpSession session) {
-
         Admin admin = adminService.doLogin(loginAccount, loginPassword);
-
         session.setAttribute(CrowdConstants.LOGIN_ADMIN, admin);
-
         return "redirect:/admin/to/main/page.html";
     }
 
@@ -63,8 +58,6 @@ public class AdminHandler {
         modelMap.addAttribute(CrowdConstants.ATTR_NAME_PAGE_INFO,pageInfo);
         return "admin-page";
     }
-
-
 
 
     /**

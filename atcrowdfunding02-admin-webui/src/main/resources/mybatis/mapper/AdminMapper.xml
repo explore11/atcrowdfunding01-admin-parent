@@ -81,8 +81,6 @@
         email like concat("%",#{keyWord},"%")
   </select>
 
-
-
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.atguigu.crowd.entity.AdminExample" >
     select
     <if test="distinct" >

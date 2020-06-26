@@ -22,7 +22,6 @@ public class CrowdExceptionResolver {
 
     /**
      * 将一个具体的异常类型和一个方法进行绑定
-     *
      * @return
      */
     @ExceptionHandler(LoginFailException.class)

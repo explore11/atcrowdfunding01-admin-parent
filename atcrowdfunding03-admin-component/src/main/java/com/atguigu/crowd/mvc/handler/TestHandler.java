@@ -37,7 +37,6 @@ public class TestHandler {
         for (int i = 0; i < 238; i++) {
             Admin admin = new Admin(null, "LoginAcct" + i, "password" + i, "username" + i, "email" + i, null);
             adminService.save(admin);
-
         }
     }
 }

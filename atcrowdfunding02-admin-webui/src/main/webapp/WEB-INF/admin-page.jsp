@@ -14,7 +14,6 @@
     function initPagination() {
         //获取总记录数
         var totalRecord = ${requestScope.pageInfo.total};
-
         //声明一个json对象来存储pagination的属性设置
         var properties = {
             num_edge_entries: 3,                //边缘页数
@@ -25,7 +24,6 @@
             prev_text: "上一页",
             next_text: "下一页",
         };
-
         //生成页码导航条
         $("#Pagination").pagination(totalRecord, properties);
     }
@@ -35,10 +33,8 @@
     function pageSelectCallback(pageIndex, jquery) {
         //根据传过来的pageIndex 计算得到pageNum
         var pageNum = pageIndex + 1;
-
         //超链接  跳转页面
         window.location.href = "admin/get/page.html?pageNum=" + pageNum;
-
         //每一个页码都是超连接  取消超链接的默认跳转
         return false;
     }

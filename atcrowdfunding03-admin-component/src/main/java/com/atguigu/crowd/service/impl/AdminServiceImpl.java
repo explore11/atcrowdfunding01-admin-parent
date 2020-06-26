@@ -42,19 +42,18 @@ public class AdminServiceImpl implements AdminService {
         AdminExample adminExample = new AdminExample();
         // 2、判断账号是否存在
         AdminExample.Criteria criteria = adminExample.createCriteria();
-        // 3、如果不存在 则抛出自定义的异常
         criteria.andLoginAcctEqualTo(loginAccount);
         List<Admin> adminList = adminMapper.selectByExample(adminExample);
-        // 判断
+        // 3、如果不存在 则抛出自定义的异常
         if (null == adminList || adminList.size() <= 0) {
             throw new LoginFailException(CrowdConstants.MESSAGE_LOGIN_FAILED);
         }
+        // 账号个数超过一个   说明账号不唯一
         if (adminList.size() > 1) {
             throw new RuntimeException(CrowdConstants.SYSTEM_ERROR_ACCOUNT_NOT_UNIQUE);
         }
         // 获取对象
         Admin admin = adminList.get(0);
-
         if (null == admin) {
             throw new LoginFailException(CrowdConstants.MESSAGE_LOGIN_FAILED);
         }
