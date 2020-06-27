@@ -21,7 +21,7 @@ import java.util.Date;
 
 /**
  * @program: atcrowdfunding01-admin-parent
- * @description
+ * @description 用户相关
  * @author: swq
  * @create: 2020-04-30 22:56
  **/
