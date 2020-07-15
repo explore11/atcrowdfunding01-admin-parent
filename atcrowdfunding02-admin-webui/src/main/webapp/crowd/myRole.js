@@ -34,9 +34,10 @@ function getPageInfoRemote() {
 function fullTableData(pageInfo) {
     //清除之前的旧数据
     $("#rolePageBody").empty();
+    $("#Pagination").empty();
 
     if (pageInfo == null || pageInfo.list == null || pageInfo.list.length === 0) {
-        $("#rolePageBody").append("<tr><td colspan='4'> 抱歉 未能找到你需要的数据！ </td></tr>");
+        $("#rolePageBody").append("<tr><td colspan='4' align='center'> 抱歉 未能找到你需要的数据！ </td></tr>");
         return;
     }
     // 循环遍历
