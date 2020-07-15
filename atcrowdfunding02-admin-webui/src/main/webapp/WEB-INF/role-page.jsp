@@ -3,6 +3,8 @@
 <html lang="zh-CN">
 <%@include file="/WEB-INF/include-header.jsp" %>
 <script src="crowd/myRole.js" type="text/javascript"></script>
+<link rel="stylesheet" href="css/pagination.css"/>
+<script type="text/javascript" src="jquery/jquery.pagination.js"></script>
 <script type="text/javascript">
     $(function () {
         //定义全局变量  为分页初始化数据
@@ -13,7 +15,18 @@
         // 调用分页方法
         generatePage();
 
+        // 点击搜索按钮
+        $("#searchBtn").click(function () {
+            // 获取输入框的值
+            let keyword = $("#keyword").val();
+            window.keyword = keyword;
+            window.pageNum = 1;
+            //调用分页
+            generatePage();
+        })
     });
+
+
 
 
 </script>
@@ -32,10 +45,11 @@
                         <div class="form-group has-feedback">
                             <div class="input-group">
                                 <div class="input-group-addon">查询条件</div>
-                                <input class="form-control has-success" type="text" placeholder="请输入查询条件">
+                                <input id="keyword" class="form-control has-success" type="text" placeholder="请输入查询条件">
                             </div>
                         </div>
-                        <button type="button" class="btn btn-warning"><i class="glyphicon glyphicon-search"></i> 查询
+                        <button type="button" id="searchBtn" class="btn btn-warning"><i
+                                class="glyphicon glyphicon-search"></i> 查询
                         </button>
                     </form>
                     <button type="button" class="btn btn-danger" style="float:right;margin-left:10px;"><i
@@ -74,15 +88,7 @@
                             <tfoot>
                             <tr>
                                 <td colspan="6" align="center">
-                                    <ul class="pagination">
-                                        <li class="disabled"><a href="#">上一页</a></li>
-                                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#">下一页</a></li>
-                                    </ul>
+                                    <div id="Pagination" class="pagination"><!-- 这里显示分页 --></div>
                                 </td>
                             </tr>
 
